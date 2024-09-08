@@ -1,7 +1,3 @@
-# Welcome to Remix!
-
-- 📖 [Remix docs](https://remix.run/docs)
-
 ## Development
 
 Run the dev server:
@@ -10,31 +6,27 @@ Run the dev server:
 npm run dev
 ```
 
-## Deployment
+## Kinde
 
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
+Create `env.local` with the following values:
 
 ```sh
-npm start
+# Kinde config
+KINDE_SITE_URL="http://localhost:5173"
+KINDE_CLIENT_ID="fbc..."
+KINDE_ISSUER_URL="https://..."
+KINDE_CLIENT_SECRET="UGh..."
+KINDE_POST_LOGIN_REDIRECT_URL="http://localhost:5173"
+KINDE_POST_LOGOUT_REDIRECT_URL="http://localhost:5173"
 ```
 
-Now you'll need to pick a host to deploy it to.
+## Authentication issue
 
-### DIY
+- Go to [http://localhost:5173](http://localhost:5173) and click "Login"
+- Click on "No account? Create one"
+- Enter email address
+- Check email for code
+- Enter code
+- Check terminal for log should be `🔥 undefined`
 
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+The `user` value in `app/routes/kinde-auth.$index.tsx` should be populated and not `undefined`.
